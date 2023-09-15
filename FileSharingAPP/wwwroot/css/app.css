@@ -1,0 +1,17 @@
+﻿body {
+    font-family:cursive;
+}
+
+main.main-content {
+    margin-top: 140px;
+    min-height:500px;
+}
+
+.container-images{
+    margin-left:100px;
+}
+
+.test {
+    margin-left: 86px;
+    margin-bottom: -20px;
+}

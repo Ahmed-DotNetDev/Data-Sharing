@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FileSharingAPP.Models.UploadViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="text-center text-monospace mb-4">My Uploads</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success"><strong>Upload New</strong></a>
+</p> 
+<table class="table table-bordered text-center">
+    <thead class="table-dark ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model=>model.DownloadCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               <img src="Uploads/@item.FileName" style="width:70px" class="img-thumbnail">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem =>item.Size)<span> byte</span>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadCount)
+                    @if (item.DownloadCount > 5)
+                    {
+                        <i class="fa-solid fa-star"></i>
+                    }
+                </td>
+
+            <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><strong>Delete</strong></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FileSharingAPP.Models.UploadViewModel>
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h2 class="text-center text-monospace">Search Results</h2>
+<br />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card m-4" style="width:700px;">
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <img src="/Uploads/@item.FileName" alt="Photo file" class="card-img" width="100%" height="100%"/>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.OriginalName</h5>
+                            <p class="card-text"><small class="text-muted">@item.UploadDate</small></p>
+                            <p class="card-text"><small class="text-muted">@Math.Round(@item.Size / 1024) KB</small></p>
+                            <div>
+                                <strong class="text-info">Downloads: @item.DownloadCount </strong>
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-success" asp-route-id="@item.FileName" asp-action="Downloads" asp-controller="Uploads">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

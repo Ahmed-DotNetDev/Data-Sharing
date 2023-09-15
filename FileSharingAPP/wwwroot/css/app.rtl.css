@@ -1,0 +1,11 @@
+﻿body {
+    font-family:'Cairo',sans-serif;
+
+}
+.navbar-brand.mu-logo{
+    padding-left:30px;
+    padding-right:0px;
+}
+.input-group{
+    direction:ltr !important;
+}

@@ -1,7 +1,12 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
-@inject IViewLocalizer localizer
+﻿@using Microsoft.AspNetCore.Localization;
+@inject IViewLocalizer localizer;
+@{
+	var reqCulture = Context.Features.Get<IRequestCultureFeature>();
+	var culture = reqCulture.RequestCulture.Culture.Name;
+	var IsArabic = culture == "ar-SA";
+}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@(IsArabic?"ar":"en")">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +17,17 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>B-Hero : Home</title>
+	<title>ViewData["Title"] Data-Sharing : Home</title>
+	@if (IsArabic)
+	{
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+		<link href="~/css/app.rtl.css" rel="stylesheet" />
+	}
+	else
+	{
+
+	}
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/icon" href="~/assets/images/favicon.ico" />
 	<!-- Font Awesome -->
@@ -36,7 +51,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800" rel="stylesheet">
 
 </head>
-<body>
+<body dir="@(IsArabic?"rtl":"ltr")">
 
 	<!--START SCROLL TOP BUTTON -->
 	<a class="scrollToTop" href="#">
@@ -104,12 +119,12 @@
 	</header>
 	<!-- End Header -->
 
-		<div class="container">
+	<div class="container">
 		<main class="main-content">
-			
+
 			@RenderBody()
 		</main>
-		</div>
+	</div>
 
 	<footer class="border-top footer text-muted">
 		<div class="container">

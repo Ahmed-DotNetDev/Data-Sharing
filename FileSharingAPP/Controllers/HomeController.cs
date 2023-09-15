@@ -1,8 +1,11 @@
 ﻿using FileSharingAPP.Data;
 using FileSharingAPP.Helpers.Mail;
 using FileSharingAPP.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
@@ -107,6 +110,19 @@ namespace FileSharingAPP.Controllers
 		public IActionResult About()
 		{
 			return View();
+		}
+		[HttpGet]
+		public IActionResult SetCulture(string Lang)
+		{
+			if (!string.IsNullOrEmpty(Lang))
+			{
+				Response.Cookies.Append(
+				 CookieRequestCultureProvider.DefaultCookieName,
+				 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Lang)),
+		  	new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+			   );
+			}
+			return RedirectToAction("Index");
 		}
 	}
 }

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -55,25 +57,25 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto mu-navbar-nav">
 						<li class="nav-item @(Context.Request.Path.Value=="/" ? "active":"")">
-							<a class="" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+							<a class="" asp-area="" asp-controller="Home" asp-action="Index">@localizer["Home"]</a>
 						</li>
 						<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/privacy"?  "active":"")">
-							<a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+							<a class="" asp-area="" asp-controller="Home" asp-action="Privacy">@localizer["Privacy"]</a>
 						</li>
 						<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/uploads/browse" ?  "active":"")">
-							<a class="" asp-area="" asp-controller="Uploads" asp-action="Browse">Browse</a>
+							<a class="" asp-area="" asp-controller="Uploads" asp-action="Browse">@localizer["Browse"]</a>
 						</li>
 						@if (User.Identity.IsAuthenticated)
 						{
 							<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/uploads" ?  "active":"")">
-								<a class="" asp-area="" asp-controller="Uploads" asp-action="Index">Uploads</a>
+								<a class="" asp-area="" asp-controller="Uploads" asp-action="Index">@localizer["Uploads"]</a>
 							</li>
 						}
 						<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/contact" ?  "active":"")">
-							<a class="" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+							<a class="" asp-area="" asp-controller="Home" asp-action="Contact">@localizer["Contact"]</a>
 						</li>
 						<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/home/about" ?  "active":"")">
-							<a class="" asp-area="" asp-controller="Home" asp-action="About">About</a>
+							<a class="" asp-area="" asp-controller="Home" asp-action="About">@localizer["About"]</a>
 						</li>
 					</ul>
 					<ul class="navbar-nav align-right mu-bavbar-nav" style="width:45%">
@@ -83,7 +85,7 @@
 								<a class="nav-link  text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Info">@User.Identity.Name</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Account" asp-action="Logout"><strong>Logout</strong></a>
+								<a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Account" asp-action="Logout"><strong>@localizer["Logout"]</strong></a>
 							</li>
 						}
 						else
@@ -159,12 +161,15 @@
 					</div>
 					<div class="col-md-3">
 						<div class="mu-single-footer">
+							<h3>Languages</h3>
+							<ul class="mu-useful-links">
+								<li><a href="/Home/SetCulture?Lang=ar-SA">العربية</a></li>
+								<li><a href="/Home/SetCulture?Lang=en-US">English</a></li>
+							</ul>
 							<h3>Useful link</h3>
 							<ul class="mu-useful-links">
 								<li><a href="#">Help Center</a></li>
 								<li><a href="#">Download Center</a></li>
-								<li><a href="#">User Account</a></li>
-								<li><a href="#">Support Forum</a></li>
 							</ul>
 						</div>
 					</div>
@@ -232,7 +237,7 @@
 	<!-- Custom js -->
 	<script type="text/javascript" src="~/assets/js/custom.js"></script>
 	<!-- About us Skills Circle progress  -->
-@* 	<script>
+	<script>
 		// First circle
 		new Circlebar({
 			element: "#circle-1",
@@ -261,6 +266,6 @@
 			maxValue: "74"
 		});
 
-	</script> *@
+	</script>
 </body>
 </html>

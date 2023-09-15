@@ -22,7 +22,11 @@ namespace FileSharingAPP
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllersWithViews();
+			services.AddControllersWithViews()
+				.AddViewLocalization(op =>
+				{
+					op.ResourcesPath = "Resources";
+				});
 			services.AddDbContext<ApplicationDbContext>(options =>
 			{
 				options.UseSqlServer(Configuration.GetConnectionString("DefautConnection"));
@@ -48,11 +52,17 @@ namespace FileSharingAPP
 			}
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
+			var SuportedCulture = new[] { "ar-SA", "en-US" };
+			app.UseRequestLocalization(r =>
+			{
+				r.AddSupportedUICultures(SuportedCulture);
+				r.AddSupportedCultures(SuportedCulture);
+				r.SetDefaultCulture("en-US");
+			});
 
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
-			app.UseRequestLocalization();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(

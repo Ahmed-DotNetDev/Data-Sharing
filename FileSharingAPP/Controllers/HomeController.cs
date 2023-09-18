@@ -112,7 +112,7 @@ namespace FileSharingAPP.Controllers
 			return View();
 		}
 		[HttpGet]
-		public IActionResult SetCulture(string Lang)
+		public IActionResult SetCulture(string Lang, string ReturnUrl = null)
 		{
 			if (!string.IsNullOrEmpty(Lang))
 			{
@@ -121,6 +121,10 @@ namespace FileSharingAPP.Controllers
 				 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(Lang)),
 		  	new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
 			   );
+			}
+			if (!string.IsNullOrEmpty(Lang))
+			{
+				return LocalRedirect(ReturnUrl);
 			}
 			return RedirectToAction("Index");
 		}

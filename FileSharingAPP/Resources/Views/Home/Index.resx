@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>من نحن</value>
+  <data name="Download" xml:space="preserve">
+    <value>Downloads</value>
   </data>
-  <data name="Browse" xml:space="preserve">
-    <value>تصفح</value>
+  <data name="File name" xml:space="preserve">
+    <value>File Name</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>اتصل بنا</value>
+  <data name="Header" xml:space="preserve">
+    <value>Search File</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>الرئيسية</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>تسجيل دخول</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>تسجيل خروج</value>
-  </data>
-  <data name="Privacy" xml:space="preserve">
-    <value>الخصوصية</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>مستخدم جديد</value>
-  </data>
-  <data name="Uploads" xml:space="preserve">
-    <value>التحميلات</value>
+  <data name="Popular" xml:space="preserve">
+    <value>Popular downloads</value>
   </data>
 </root>

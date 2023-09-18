@@ -1,5 +1,5 @@
 ﻿body {
-    font-family:cursive;
+    font-family: 'Cairo',sans-serif;
 }
 
 main.main-content {
@@ -15,3 +15,4 @@ main.main-content {
     margin-left: 86px;
     margin-bottom: -20px;
 }
+

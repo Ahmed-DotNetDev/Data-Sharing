@@ -44,7 +44,7 @@ html {
 }
 
 body {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Cairo', sans-serif;
 	color: #666666;
 	font-size: 16px;
 	font-weight: 400;
@@ -78,7 +78,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Cairo', sans-serif;
 	font-weight: 700;
 	margin-top: 0;
 }
@@ -140,7 +140,7 @@ kbd {
 	background-color: #ddd;
 	padding: 4px 6px;
 	border-radius: 2px;
-	color: ;
+	
 }
 
 address {
@@ -252,12 +252,11 @@ iframe {
 
 .mu-single-slide:before {
 	background-color:#8481b0;
-	filter:progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#8481b0, endColorstr=#73b58c);
+	
 	background-image:-moz-linear-gradient(left, #8481b0 55%, #73b58c 22%,#69bbd5 100%);
 	background-image:linear-gradient(left, #8481b0 55%, #73b58c 22%,#69bbd5 100%);
 	background-image:-webkit-linear-gradient(left, #8481b0 55%, #73b58c 22%,#69bbd5 100%);
 	background-image:-o-linear-gradient(left, #8481b0 55%, #73b58c 22%,#69bbd5 100%);
-	background-image:-ms-linear-gradient(left, #8481b0 55%, #73b58c 22%,#69bbd5 100%);
 	background-image:-webkit-gradient(linear, left bottom, right bottom, color-stop(55%,#8481b0), color-stop(22%,#73b58c),color-stop(100%,#69bbd5));
 }
 
@@ -907,7 +906,6 @@ a:focus,
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 	opacity: 0.9;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
 }
 
 .filtr-item:hover .mu-filter-item-content {
@@ -1145,7 +1143,7 @@ a:focus,
 .mu-single-pricebox h4 {
 	color: #0277bd;
 	font-size: 48px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Cairo', sans-serif;
 }
 
 .mu-single-pricebox h4 > span {
@@ -1177,7 +1175,7 @@ a:focus,
 	padding: 50px 0 40px;
 }
 
-.mu-standard-pricing .mu-single-pricebox {;
+.mu-standard-pricing .mu-single-pricebox {
 	padding: 5px 0 40px;
 }
 
@@ -2428,7 +2426,6 @@ a:focus,
 	padding: 8px 10px;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }
@@ -2508,7 +2505,6 @@ a:focus,
 	width: 25px;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }
@@ -2564,7 +2560,6 @@ a:focus,
 	width: 65%;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }
@@ -2577,7 +2572,6 @@ a:focus,
 	width: 100%;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
-	-ms-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }

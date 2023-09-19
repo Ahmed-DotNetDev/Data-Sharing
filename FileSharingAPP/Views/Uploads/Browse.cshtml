@@ -5,25 +5,36 @@
 <h2 class="text-center text-monospace text-primary"><strong>Browse Uploads</strong></h2>
 <br />
 <div class="container-images">
-<div class="container">
-	<div class="row">
-		@foreach (var item in Model)
-		{
-            
-			<div class="card m-3" style="width:205px">
+	<div class="container">
+		<div class="row">
+			@foreach (var item in Model)
+			{
+				<div class="card m-3" style="width:390px;">
 					<img src="/Uploads/@item.FileName" alt="Photo file" class="card-img-top" width="100%" height="100%" loading="lazy" />
-				<div class="card-body">
-					<h5 class="card-title">@item.OriginalName</h5>
-					<p class="card-text"><small class="text-muted">@item.UploadDate</small></p>
-					<p class="card-text"><small class="text-muted"><span>Size: </span>@Math.Round(@item.Size / 1024) KB</small></p>
-					<div class="text-right">
-						<a class="btn btn-success test" asp-route-id="@item.FileName" asp-action="Downloads" asp-controller="Uploads">Download</a>
-					</div>
+					<div class="card-body">
+						<h5 class="card-title">@item.OriginalName</h5>
+						<p class="card-text"><small class="text-muted">@item.UploadDate</small></p>
+						<p class="card-text"><small class="text-muted"><span>Size: </span>@Math.Round(@item.Size / 1024) KB</small></p>
+						<div class="text-right">
+							<a class="btn btn-success test" asp-route-id="@item.FileName" asp-action="Downloads" asp-controller="Uploads">Download</a>
+						</div>
 
+					</div>
 				</div>
+			}
+			<div class="col-10 text-center pb-1 ml-2">
+				@if (ViewBag.CurrentPage - 1>0)
+				{
+				<a href="/Uploads/Browse/?RequiredPage=@(ViewBag.CurrentPage-1)" class="btn btn-outline-primary btn-lg align-left">Prev</a>
+				}
+				@if (ViewBag.CurrentPage - 1 <= ViewBag.PagesCount)
+				{
+				<a href="/Uploads/Browse/?RequiredPage=@(ViewBag.CurrentPage+1)" class="btn btn-outline-primary btn-lg align-right">Next</a>
+				}
+
+
 			</div>
-		}
+		</div>
 	</div>
-</div>
 
 </div>

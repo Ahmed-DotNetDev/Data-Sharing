@@ -1,5 +1,6 @@
 using FileSharingAPP.Data;
 using FileSharingAPP.Helpers.Mail;
+using FileSharingAPP.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +35,7 @@ namespace FileSharingAPP
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			services.AddTransient<ImailHelper, MailHelper>();
+			services.AddTransient<IUploadService, UploadService>();
 			services.AddLocalization();
 		}
 

@@ -90,23 +90,26 @@
 							<a class="" asp-area="" asp-controller="Home" asp-action="About">@localizer["About"]</a>
 						</li>
 					</ul>
-					<ul class="navbar-nav align-right mu-bavbar-nav" style="width:45%">
+					<ul class="navbar-nav align-right mu-bavbar-nav text-light font-weight-bolder" style="width:45%">
 						@if (User.Identity.IsAuthenticated)
 						{
-							<li class="nav-item">
-								<a class="nav-link  text-light font-weight-bold" asp-area="" asp-controller="Home" asp-action="Info">@User.Identity.Name</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-light font-weight-bold" asp-area="" asp-controller="Account" asp-action="Logout"><strong>@localizer["Logout"]</strong></a>
+							<li class="nav-item dropdown">
+								<a class="dropdown-toggle text-light font-weight-bold pl-3" href="#" role="button" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Account
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item @(Context.Request.Path.Value.ToLower()=="/account/info" ?  "active":"")" asp-area="" asp-controller="Account" asp-action="Info">@User.Identity.Name</a>
+									<a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">@localizer["Logout"]</a>
+								</div>
 							</li>
 						}
 						else
 						{
-							<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/account/login" ? "active":"")">
-								<a class="nav-link text-uppercase" asp-area="" asp-controller="Account" asp-action="Login">@localizer["Login"]</a>
+							<li class="nav-item text-light">
+								<a class="nav-link text-capitalize @(Context.Request.Path.Value.ToLower()=="/account/login" ? "active":"")" asp-area="" asp-controller="Account" asp-action="Login">@localizer["Login"]</a>
 							</li>
-							<li class="nav-item @(Context.Request.Path.Value.ToLower()=="/account/register" ?  "active":"")">
-								<a class="nav-link text-uppercase" asp-area="" asp-controller="Account" asp-action="Register">@localizer["Register"]</a>
+							<li class="nav-item text-light">
+									<a class="nav-link text-capitalize @(Context.Request.Path.Value.ToLower()=="/account/register" ?  "active":"")" asp-area="" asp-controller="Account" asp-action="Register">@localizer["Register"]</a>
 							</li>
 						}
 					</ul>

@@ -21,7 +21,6 @@
 					<!-- Start Contact Content -->
 					<div class="mu-contact-content">
 						<div class="row">
-
 							<div class="col-md-12">
 								<div class="mu-contact-form-area">
 									<div id="form-messages"></div>
@@ -40,6 +39,14 @@
 								</div>
 							</div>
 						</div>
+						<div class="row pt-4">
+							<div class="col-6">
+								<a class="btn btn-outline-primary" asp-action="ExternalLogin" asp-route-provider="Facebook" asp-controller="Account">Login with facebook</a>
+							</div>
+							<div class="col-6">
+								<a class="btn btn-outline-danger" asp-action="ExternalLogin" asp-route-provider="Google" asp-controller="Account">Login with google</a>
+							</div>
+						</div>
 					</div>
 					<!-- End Contact Content -->
 				</div>
@@ -47,7 +54,6 @@
 		</div>
 	</div>
 </section>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

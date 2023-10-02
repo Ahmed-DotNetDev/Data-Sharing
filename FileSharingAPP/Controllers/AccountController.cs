@@ -8,11 +8,13 @@ namespace FileSharingAPP.Controllers
 {
 	public class AccountController : Controller
 	{
+
 		private readonly SignInManager<IdentityUser> signInManager;
 		private readonly UserManager<IdentityUser> userManager;
 
 		public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
 		{
+
 			this.signInManager = signInManager;
 			this.userManager = userManager;
 		}
@@ -97,7 +99,7 @@ namespace FileSharingAPP.Controllers
 				var UserToCreate = new IdentityUser
 				{
 					Email = email,
-					UserName = email
+					UserName = email,
 				};
 				var CreateResult = await userManager.CreateAsync(UserToCreate);
 				if (CreateResult.Succeeded)
@@ -123,6 +125,61 @@ namespace FileSharingAPP.Controllers
 		{
 			return View();
 		}
+		[HttpPost]
+		public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var currentUser = await userManager.GetUserAsync(User);
+				if (currentUser != null)
+				{
+					var result = await userManager.ChangePasswordAsync(currentUser, model.NewPassword, model.ConfirmNewPassword);
+					if (result.Succeeded)
+					{
+						return RedirectToAction("Info");
+					}
+					foreach (var error in result.Errors)
+					{
+						ModelState.AddModelError("", error.Description);
+					}
+				}
+				else
+				{
+					return NotFound();
+				}
+			}
+			return RedirectToAction("Info");
+		}
+		[HttpGet]
+		public IActionResult ForgotPassword()
+		{
+			return View();
+		}
+
+		//public async Task<IActionResult> ForgotPassword(ForgotPasswordViewMOdel model)
+		//{
+		//	if (ModelState.IsValid)
+		//	{
+		//		var ExistUser = await userManager.FindByEmailAsync(model.Email);
+		//		if (ExistUser != null)
+		//		{
+		//			var Token = await userManager.GeneratePasswordResetTokenAsync(ExistUser);
+		//			var URL = Url.Action("ResetPassword", "Account", new { Token, model.Email }, Request.Scheme);
+		//			StringBuilder body = new StringBuilder();
+		//			body.AppendLine("File sharing app : reset password");
+		//			body.AppendLine("We are sending this email to reset password");
+		//			body.AppendFormat("to reset new password <a href='{0}'>Click this link</a>", URL);
+		//			mailHelper.SendMail(new InputEmailMessage
+		//			{
+		//				Email = model.Email,
+		//				Subject = "Reset password",
+		//				Body = body.ToString()
+		//			});
+		//		}
+		//		TempData["Success"] = "if you email match in out system this will recieve to you";
+		//	}
+		//	return View(model);
+		//}
 	}
 
 }

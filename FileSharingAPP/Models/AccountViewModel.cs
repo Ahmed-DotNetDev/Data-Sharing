@@ -27,5 +27,22 @@ namespace FileSharingAPP.Models
 		[Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(SharedResource))]
 		[Display(Name = "confirmpass", ResourceType = typeof(SharedResource))]
 		public string ConfirmPassword { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+	}
+	public class ChangePasswordViewModel
+	{
+		[Required]
+		public string CurrectPassword { get; set; }
+		[Required]
+		public string NewPassword { get; set; }
+		[Compare("NewPassword")]
+		public string ConfirmNewPassword { get; set; }
+	}
+	public class ForgotPasswordViewMOdel
+	{
+		[Required]
+		[EmailAddress]
+		public string Email { get; set; }
 	}
 }

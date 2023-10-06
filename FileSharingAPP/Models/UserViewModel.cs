@@ -1,9 +1,10 @@
 ﻿namespace FileSharingAPP.Models
 {
-    public class UserViewModel
-    {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Email { get; set; }
-    }
+	public class UserViewModel
+	{
+		public string Firstname { get; set; }
+		public string Lastname { get; set; }
+		public string Email { get; set; }
+		public bool hasPassword { get; set; }
+	}
 }
